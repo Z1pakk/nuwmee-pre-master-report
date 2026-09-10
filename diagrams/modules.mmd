@@ -1,0 +1,38 @@
+flowchart TB
+    subgraph clients["Клієнти та пристрої"]
+        direction LR
+        client["Клієнтський застосунок<br/>(Angular SPA)"]
+        esp["IoT-пристрій «Dailu Button»<br/>(ESP32, Wi-Fi)"]
+    end
+
+    subgraph api["Dailu.Api (модульний моноліт)"]
+        direction TB
+        identity["Identity"]
+        habit["Habit"]
+        tag["Tag"]
+        ai["AI"]
+        huser["HabitUser"]
+        entry["HabitEntry"]
+        shared["SharedKernel"]
+
+        identity ~~~ habit
+        habit ~~~ tag
+        tag ~~~ ai
+        huser ~~~ entry
+        entry ~~~ shared
+        huser -. "подія" .-> entry
+        habit -. "теги / інсайти" .-> ai
+    end
+
+    subgraph deps["Зовнішні залежності"]
+        direction LR
+        db[("PostgreSQL")]
+        ext["Зовнішні сервіси<br/>(GitHub, Strava)"]
+        llm["Зовнішній AI-провайдер<br/>(LLM)"]
+    end
+
+    client -->|"REST / HTTP"| api
+    esp -->|"HTTPS, ключ пристрою"| api
+    api -->|"EF Core"| db
+    api -->|"опитування"| ext
+    ai -->|"API"| llm
