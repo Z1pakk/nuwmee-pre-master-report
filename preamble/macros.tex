@@ -50,16 +50,17 @@
 % #6 - Студент (ПІБ)
 % #7 - Керівник практики від кафедри
 % #8 - База практики
-\newcommand{\makepracticetitlepage}[8]{%
+% #9 - Науковий керівник
+\newcommand{\makepracticetitlepage}[9]{%
     \begin{titlepage}
     \thispagestyle{empty}
     \begin{center}
-    \MakeUppercase{\textbf{#1}}\\[0.5em] \textbf{#2}\\[1em] \textbf{#3}\\[3em]
+    \MakeUppercase{\textbf{#1}}\\[0.5em] \textbf{#2}\\[1em] \textbf{#3}\\[1.5em]
     \MakeUppercase{\textbf{Звіт}}\\[0em] про проходження передкваліфікаційної практики\\[1em] База практики: #8\\[1em] за темою кваліфікаційної роботи:\\[0em] «#4»
     \end{center}
     \vfill\noindent\hfill
-    \begin{tabular}{l} Виконав студент ННІКІТІ: \\ групи: #5 \\ #6 \\[1.5em] Керівник практики від кафедри: \\ \parbox[t]{8cm}{\raggedright #7\strut} \end{tabular}
-    \vspace{3em}\begin{center} Рівне – 2026 \end{center}
+    \begin{tabular}{l} Виконав студент ННІКІТІ: \\ групи: #5 \\ #6 \\[1em] Керівник практики від кафедри: \\ \parbox[t]{8cm}{\raggedright #7\strut} \\[1em] Науковий керівник: \\ \parbox[t]{8cm}{\raggedright #9\strut} \end{tabular}
+    \vspace{1.5em}\begin{center} Рівне – 2026 \end{center}
     \end{titlepage}
 }
 
